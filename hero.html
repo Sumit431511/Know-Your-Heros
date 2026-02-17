@@ -1,0 +1,248 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hero Details - Know Your Heroes</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar navbar-expand-lg navbar-dark fixed-top">
+        <div class="container">
+            <a class="navbar-brand fw-bold" href="index.html">
+                <!-- <i class="fas fa-flag text-saffron me-2"></i> -->
+                Know Your Heroes
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="index.html">
+                            <i class="fas fa-home me-1"></i>Home
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="heroes.html">
+                            <i class="fas fa-users me-1"></i>Our Heroes
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="index.html#recruitment">
+                            <i class="fas fa-star me-1"></i>Join Forces
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Detail Section -->
+    <section class="hero-detail-section py-5">
+        <div class="container">
+            <!-- Loading Indicator -->
+            <div id="loadingIndicator" class="text-center py-5">
+                <div class="spinner-border text-primary" role="status">
+                    <span class="visually-hidden">Loading hero details...</span>
+                </div>
+                <p class="mt-2 text-muted">Loading hero information...</p>
+            </div>
+
+            <!-- Error Message -->
+            <div id="errorMessage" class="alert alert-danger text-center" style="display: none;">
+                <i class="fas fa-exclamation-triangle me-2"></i>
+                <strong>Sorry!</strong> No hero found with this ID. 
+                <a href="heroes.html" class="alert-link">Please go back and try another.</a>
+            </div>
+
+            <!-- Hero Detail Content -->
+            <div id="heroDetailContent" style="display: none;">
+                <!-- Back Button -->
+                <div class="row mb-4">
+                    <div class="col-12">
+                        <a href="heroes.html" class="btn btn-outline-primary">
+                            <i class="fas fa-arrow-left me-2"></i>Back to Heroes
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Hero Header -->
+                <div class="row mb-5">
+                    <div class="col-lg-4 text-center mb-4">
+                        <div class="hero-image-container">
+                            <img id="heroImage" src="" alt="" class="hero-detail-image">
+                            <div class="hero-award-overlay">
+                                <span id="heroAward" class="award-badge-large"></span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-8">
+                        <div class="hero-header-info">
+                            <h1 id="heroName" class="hero-detail-title"></h1>
+                            <p id="heroRank" class="hero-rank-title"></p>
+                            <div class="hero-basic-info">
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <div class="info-item">
+                                            <i class="fas fa-calendar-alt text-primary me-2"></i>
+                                            <strong>Born:</strong> <span id="heroBirth"></span>
+                                        </div>
+                                        <div class="info-item">
+                                            <i class="fas fa-cross text-danger me-2"></i>
+                                            <strong>Martyred:</strong> <span id="heroDeath"></span>
+                                        </div>
+                                        <div class="info-item">
+                                            <i class="fas fa-hourglass-half text-warning me-2"></i>
+                                            <strong>Age:</strong> <span id="heroAge"></span> years
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div class="info-item">
+                                            <i class="fas fa-map-marker-alt text-success me-2"></i>
+                                            <strong>Hometown:</strong> <span id="heroHometown"></span>
+                                        </div>
+                                        <div class="info-item">
+                                            <i class="fas fa-flag text-info me-2"></i>
+                                            <strong>State:</strong> <span id="heroState"></span>
+                                        </div>
+                                        <div class="info-item">
+                                            <i class="fas fa-shield-alt text-primary me-2"></i>
+                                            <strong>Regiment:</strong> <span id="heroRegiment"></span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- War Information -->
+                <div class="row mb-5">
+                    <div class="col-12">
+                        <div class="war-info-card">
+                            <h3 class="section-title">
+                                <i class="fas fa-sword me-2"></i>War & Battle Information
+                            </h3>
+                            <div class="row">
+                                <div class="col-md-4">
+                                    <div class="war-detail">
+                                        <h5><i class="fas fa-fire text-danger me-2"></i>War/Conflict</h5>
+                                        <p id="heroWar" class="war-name"></p>
+                                    </div>
+                                </div>
+                                <div class="col-md-4">
+                                    <div class="war-detail">
+                                        <h5><i class="fas fa-crosshairs text-warning me-2"></i>Battle Location</h5>
+                                        <p id="heroBattleLocation" class="battle-location"></p>
+                                    </div>
+                                </div>
+                                <div class="col-md-4">
+                                    <div class="war-detail">
+                                        <h5><i class="fas fa-calendar text-info me-2"></i>Year</h5>
+                                        <p id="heroYear" class="war-year"></p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Biography Section -->
+                <div class="row mb-5">
+                    <div class="col-12">
+                        <div class="biography-card">
+                            <h3 class="section-title">
+                                <i class="fas fa-book me-2"></i>Biography & Story of Valor
+                            </h3>
+                            <div class="biography-content">
+                                <p id="heroFullStory" class="story-text"></p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Additional Information -->
+                <div class="row mb-5">
+                    <div class="col-lg-6 mb-4">
+                        <div class="additional-info-card">
+                            <h4 class="card-title">
+                                <i class="fas fa-users text-primary me-2"></i>Family Background
+                            </h4>
+                            <p id="heroFamily" class="card-text"></p>
+                        </div>
+                    </div>
+                    <div class="col-lg-6 mb-4">
+                        <div class="additional-info-card">
+                            <h4 class="card-title">
+                                <i class="fas fa-graduation-cap text-success me-2"></i>Education
+                            </h4>
+                            <p id="heroEducation" class="card-text"></p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Personal Motto -->
+                <div class="row mb-5">
+                    <div class="col-12">
+                        <div class="motto-card text-center">
+                            <h4 class="motto-title">
+                                <i class="fas fa-quote-left text-saffron me-2"></i>Personal Motto
+                            </h4>
+                            <blockquote id="heroMotto" class="motto-text"></blockquote>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Tribute Section -->
+                <div class="row">
+                    <div class="col-12">
+                        <div class="tribute-section text-center">
+                            <h3 class="tribute-title">
+                                <i class="fas fa-heart text-danger me-2"></i>In Loving Memory
+                            </h3>
+                            <p class="tribute-text">
+                                We honor the supreme sacrifice made by this brave soul for our motherland. 
+                                Their courage, valor, and dedication continue to inspire generations of Indians.
+                            </p>
+                            <div class="tribute-badges">
+                                <span class="badge bg-saffron me-2">🇮🇳</span>
+                                <span class="badge bg-success me-2">Jai Hind</span>
+                                <span class="badge bg-primary">Vande Mataram</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-dark text-white py-4">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-8 mx-auto text-center">
+                    <p class="mb-2">
+                        <i class="fas fa-heart text-danger me-2"></i>
+                        In loving memory of all brave hearts who sacrificed for our nation
+                    </p>
+                    <p class="text-muted small">
+                        &copy; 2025 Know Your Heroes. Created with respect and honor for our martyrs.
+                    </p>
+                    <div class="social-links mt-3">
+                        <span class="badge bg-saffron me-2">🇮🇳</span>
+                        <span class="text-muted">Jai Hind | Vande Mataram</span>
+                        <span class="badge bg-success ms-2">🙏</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="js/hero.js"></script>
+</body>
+</html>

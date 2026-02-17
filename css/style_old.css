@@ -1,0 +1,787 @@
+/* Root Variables */
+:root {
+    --primary-color: #1a472a;
+    --secondary-color: #2d5a3d;
+    --accent-color: #ff9933;
+    --saffron: #ff9933;
+    --white: #ffffff;
+    --green: #138808;
+    --success-color: #28a745;
+    --danger-color: #dc3545;
+    --warning-color: #ffc107;
+    --info-color: #17a2b8;
+    --light-gray: #f8f9fa;
+    --dark-gray: #6c757d;
+    --text-dark: #212529;
+    --text-light: #ffffff;
+    --border-color: #dee2e6;
+    --shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    --shadow-lg: 0 10px 25px rgba(0, 0, 0, 0.15);
+}
+
+/* Global Styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    line-height: 1.6;
+    color: var(--text-dark);
+    scroll-behavior: smooth;
+    padding-top: 76px;
+}
+
+/* Custom Bootstrap Colors */
+.bg-primary {
+    background: linear-gradient(135deg, var(--primary-color), var(--secondary-color)) !important;
+}
+
+.btn-primary {
+    background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+    border: none;
+    transition: all 0.3s ease;
+}
+
+.btn-primary:hover {
+    background: linear-gradient(135deg, var(--secondary-color), var(--primary-color));
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-lg);
+}
+
+.text-saffron {
+    color: var(--saffron) !important;
+}
+
+.bg-saffron {
+    background-color: var(--saffron) !important;
+}
+
+.text-primary {
+    color: var(--primary-color) !important;
+}
+
+/* Navigation */
+.navbar {
+    background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+    backdrop-filter: blur(10px);
+    box-shadow: var(--shadow);
+    transition: all 0.3s ease;
+}
+
+.navbar-brand {
+    font-size: 1.5rem;
+    font-weight: bold;
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.3);
+}
+
+.nav-link {
+    color: rgba(255, 255, 255, 0.9) !important;
+    transition: all 0.3s ease;
+    position: relative;
+}
+
+.nav-link:hover,
+.nav-link.active {
+    color: var(--saffron) !important;
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.3);
+}
+
+.nav-link::after {
+    content: '';
+    position: absolute;
+    bottom: -5px;
+    left: 50%;
+    width: 0;
+    height: 2px;
+    background-color: var(--saffron);
+    transition: all 0.3s ease;
+    transform: translateX(-50%);
+}
+
+.nav-link:hover::after,
+.nav-link.active::after {
+    width: 100%;
+}
+
+/* Hero Section */
+.hero-section {
+    min-height: 100vh;
+    background: linear-gradient(rgba(26, 71, 42, 0.7), rgba(45, 90, 61, 0.8)), 
+    url('https://etvbharatimages.akamaized.net/etvbharat/prod-images/768-512-3947597-thumbnail-3x2-soldier.jpg??imwidth=3840?auto=compress&cs=tinysrgb&w=1600') center/cover;
+    display: flex;
+    align-items: center;
+    position: relative;
+    overflow: hidden;
+}
+
+.hero-section::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(45deg, 
+        rgba(255, 153, 51, 0.05) 0%, 
+        rgba(26, 71, 42, 0.4) 50%, 
+        rgba(19, 136, 8, 0.05) 100%);
+    z-index: 1;
+}
+
+.hero-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: radial-gradient(circle at center, rgba(26, 71, 42, 0.3) 0%, rgba(45, 90, 61, 0.4) 100%);
+    z-index: 1;
+}
+
+.hero-content {
+    position: relative;
+    z-index: 2;
+    animation: fadeInUp 1s ease-out;
+}
+
+.hero-title {
+    font-size: 4.5rem;
+    font-weight: bold;
+    color: white;
+    text-shadow: 3px 3px 6px rgba(0, 0, 0, 0.5);
+    margin-bottom: 1rem;
+    background: linear-gradient(45deg, #ffffff, var(--saffron), #ffffff);
+    background-size: 200% 200%;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    animation: gradientShift 3s ease-in-out infinite;
+}
+
+.hero-subtitle {
+    font-size: 1.4rem;
+    color: rgba(255, 255, 255, 0.9);
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+    margin-bottom: 2rem;
+    line-height: 1.8;
+}
+
+.hero-badge {
+    margin-bottom: 2rem;
+    animation: pulse 2s infinite;
+}
+
+.hero-actions .btn {
+    margin: 0.5rem;
+    padding: 1rem 2rem;
+    font-size: 1.1rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    border-radius: 50px;
+    transition: all 0.3s ease;
+}
+
+.btn-outline-light {
+    border: 2px solid rgba(255, 255, 255, 0.8);
+    color: rgba(255, 255, 255, 0.9);
+}
+
+.btn-outline-light:hover {
+    background-color: rgba(255, 255, 255, 0.1);
+    border-color: var(--saffron);
+    color: var(--saffron);
+    transform: translateY(-3px);
+    box-shadow: var(--shadow-lg);
+}
+
+/* Page Header */
+.page-header {
+    background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+    color: white;
+    padding: 6rem 0 4rem;
+    text-align: center;
+}
+
+.page-title {
+    font-size: 3.5rem;
+    font-weight: bold;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+    margin-bottom: 1rem;
+}
+
+.page-subtitle {
+    font-size: 1.3rem;
+    opacity: 0.9;
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.3);
+}
+
+/* Search Section */
+.search-section {
+    border-bottom: 3px solid var(--saffron);
+}
+
+.search-container {
+    background: white;
+    padding: 2rem;
+    border-radius: 15px;
+    box-shadow: var(--shadow-lg);
+    border: 3px solid transparent;
+    background-clip: padding-box;
+    position: relative;
+}
+
+.search-container::before {
+    content: '';
+    position: absolute;
+    top: -3px;
+    left: -3px;
+    right: -3px;
+    bottom: -3px;
+    background: linear-gradient(45deg, var(--saffron), var(--primary-color), var(--green));
+    border-radius: 15px;
+    z-index: -1;
+}
+
+.form-control,
+.form-select {
+    border: 2px solid var(--border-color);
+    padding: 0.8rem 1rem;
+    font-size: 1rem;
+    transition: all 0.3s ease;
+    border-radius: 8px;
+}
+
+.form-control:focus,
+.form-select:focus {
+    border-color: var(--primary-color);
+    box-shadow: 0 0 0 0.2rem rgba(26, 71, 42, 0.25);
+}
+
+.input-group-text {
+    border: 2px solid var(--primary-color);
+    border-right: none;
+}
+
+/* Section Titles */
+.section-title {
+    font-size: 2.8rem;
+    font-weight: bold;
+    margin-bottom: 3rem;
+    position: relative;
+    display: inline-block;
+}
+
+.section-title::after {
+    content: '';
+    position: absolute;
+    bottom: -10px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 80px;
+    height: 4px;
+    background: linear-gradient(45deg, var(--saffron), var(--green));
+    border-radius: 2px;
+}
+
+/* Feature Boxes */
+.feature-box {
+    padding: 2rem;
+    text-align: center;
+    transition: all 0.3s ease;
+    border-radius: 15px;
+}
+
+.feature-box:hover {
+    transform: translateY(-10px);
+    background: white;
+    box-shadow: var(--shadow-lg);
+}
+
+/* Hero Cards */
+.hero-card {
+    background: white;
+    border-radius: 15px;
+    overflow: hidden;
+    transition: all 0.3s ease;
+    height: 100%;
+    box-shadow: var(--shadow);
+    border-left: 5px solid var(--green);
+    border-top: 3px solid var(--saffron);
+    position: relative;
+}
+
+.hero-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 3px;
+    background: linear-gradient(90deg, var(--saffron), white, var(--green));
+    z-index: 1;
+}
+
+.hero-card:hover {
+    transform: translateY(-10px) scale(1.02);
+    box-shadow: var(--shadow-lg);
+    border-left-color: var(--saffron);
+}
+
+.hero-card .card-body {
+    padding: 2rem;
+}
+
+.hero-card .card-title {
+    color: var(--primary-color);
+    font-weight: bold;
+    font-size: 1.4rem;
+    margin-bottom: 1rem;
+}
+
+.hero-info {
+    margin-bottom: 1rem;
+}
+
+.hero-info strong {
+    color: var(--text-dark);
+    font-weight: 600;
+}
+
+.hero-info span {
+    color: var(--text-light);
+}
+
+.award-badge {
+    background: linear-gradient(45deg, var(--saffron), #ffb366);
+    color: white;
+    padding: 0.4rem 0.8rem;
+    border-radius: 20px;
+    font-size: 0.85rem;
+    font-weight: 600;
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.2);
+    display: inline-block;
+    margin-bottom: 1rem;
+}
+
+/* Recruitment Section */
+.recruitment-card {
+    background: white;
+    border-radius: 15px;
+    box-shadow: var(--shadow);
+    transition: all 0.3s ease;
+    overflow: hidden;
+    position: relative;
+}
+
+.recruitment-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 4px;
+    background: linear-gradient(90deg, var(--saffron), white, var(--green));
+    z-index: 1;
+}
+
+.recruitment-card:hover {
+    transform: translateY(-10px);
+    box-shadow: var(--shadow-lg);
+}
+
+.recruitment-card .card-body {
+    padding: 2.5rem 2rem;
+}
+
+.recruitment-details {
+    background: var(--light-gray);
+    padding: 1rem;
+    border-radius: 8px;
+    border-left: 4px solid var(--primary-color);
+}
+
+/* Loading and No Results */
+#loadingIndicator {
+    padding: 4rem 0;
+}
+
+#noResults {
+    padding: 4rem 0;
+}
+
+/* Footer */
+footer {
+    background: linear-gradient(135deg, #1a1a1a, #2d2d2d) !important;
+}
+
+.social-links {
+    font-size: 1.1rem;
+}
+
+/* Animations */
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes pulse {
+    0%, 100% {
+        transform: scale(1);
+    }
+    50% {
+        transform: scale(1.05);
+    }
+}
+
+@keyframes gradientShift {
+    0%, 100% {
+        background-position: 0% 50%;
+    }
+    50% {
+        background-position: 100% 50%;
+    }
+}
+
+/* Hero Detail Page Styles */
+.hero-detail-section {
+    padding-top: 100px;
+    min-height: 100vh;
+    background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+}
+
+.hero-detail-title {
+    font-size: 3rem;
+    font-weight: bold;
+    color: var(--primary-color);
+    margin-bottom: 0.5rem;
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.1);
+}
+
+.hero-rank-title {
+    font-size: 1.3rem;
+    color: var(--text-light);
+    font-weight: 600;
+    margin-bottom: 2rem;
+}
+
+.hero-image-container {
+    position: relative;
+    display: inline-block;
+}
+
+.hero-detail-image {
+    width: 300px;
+    height: 300px;
+    border-radius: 15px;
+    object-fit: cover;
+    border: 5px solid var(--primary-color);
+    box-shadow: var(--shadow-lg);
+    transition: all 0.3s ease;
+}
+
+.hero-detail-image:hover {
+    transform: scale(1.05);
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.2);
+}
+
+.hero-award-overlay {
+    position: absolute;
+    bottom: -10px;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 10;
+}
+
+.award-badge-large {
+    background: linear-gradient(45deg, var(--saffron), #ffb366);
+    color: white;
+    padding: 0.8rem 1.5rem;
+    border-radius: 25px;
+    font-size: 1rem;
+    font-weight: bold;
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.3);
+    box-shadow: var(--shadow);
+    border: 3px solid white;
+    display: inline-block;
+    white-space: nowrap;
+    min-width: 150px;
+    text-align: center;
+}
+
+.hero-basic-info {
+    background: white;
+    padding: 2rem;
+    border-radius: 15px;
+    box-shadow: var(--shadow);
+    border-left: 5px solid var(--green);
+}
+
+.info-item {
+    margin-bottom: 1rem;
+    font-size: 1.1rem;
+}
+
+.info-item strong {
+    color: var(--text-dark);
+    margin-right: 0.5rem;
+}
+
+.war-info-card,
+.biography-card,
+.additional-info-card,
+.motto-card {
+    background: white;
+    padding: 2.5rem;
+    border-radius: 15px;
+    box-shadow: var(--shadow);
+    border-top: 4px solid var(--saffron);
+    margin-bottom: 2rem;
+}
+
+.section-title {
+    font-size: 2rem;
+    font-weight: bold;
+    color: var(--primary-color);
+    margin-bottom: 2rem;
+    padding-bottom: 1rem;
+    border-bottom: 2px solid var(--border-color);
+}
+
+.war-detail {
+    text-align: center;
+    padding: 1rem;
+    background: var(--light-gray);
+    border-radius: 10px;
+    margin-bottom: 1rem;
+}
+
+.war-detail h5 {
+    color: var(--primary-color);
+    font-weight: 600;
+    margin-bottom: 0.5rem;
+}
+
+.war-name,
+.battle-location,
+.war-year {
+    font-size: 1.2rem;
+    font-weight: bold;
+    color: var(--text-dark);
+}
+
+.story-text {
+    font-size: 1.1rem;
+    line-height: 1.8;
+    color: var(--text-dark);
+    text-align: justify;
+    text-indent: 2rem;
+}
+
+.card-title {
+    color: var(--primary-color);
+    font-weight: bold;
+    margin-bottom: 1rem;
+}
+
+.card-text {
+    font-size: 1rem;
+    line-height: 1.6;
+    color: black;
+}
+
+.motto-card {
+    background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+    color: white;
+    border-top: 4px solid var(--saffron);
+}
+
+.motto-title {
+    color: white;
+    font-weight: bold;
+    margin-bottom: 1.5rem;
+}
+
+.motto-text {
+    font-size: 1.3rem;
+    font-style: italic;
+    font-weight: 500;
+    line-height: 1.6;
+    color: rgba(255, 255, 255, 0.95);
+    border-left: 4px solid var(--saffron);
+    padding-left: 2rem;
+    margin: 0;
+}
+
+.tribute-section {
+    background: linear-gradient(135deg, #f8f9fa, white);
+    padding: 3rem 2rem;
+    border-radius: 15px;
+    box-shadow: var(--shadow);
+    border: 3px solid transparent;
+    background-clip: padding-box;
+    position: relative;
+}
+
+.tribute-section::before {
+    content: '';
+    position: absolute;
+    top: -3px;
+    left: -3px;
+    right: -3px;
+    bottom: -3px;
+    background: linear-gradient(45deg, var(--saffron), var(--primary-color), var(--green));
+    border-radius: 15px;
+    z-index: -1;
+}
+
+.tribute-title {
+    font-size: 2.2rem;
+    font-weight: bold;
+    color: var(--primary-color);
+    margin-bottom: 1.5rem;
+}
+
+.tribute-text {
+    font-size: 1.2rem;
+    line-height: 1.8;
+    color: var(--text-light);
+    margin-bottom: 2rem;
+    max-width: 800px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.tribute-badges .badge {
+    font-size: 1.1rem;
+    padding: 0.8rem 1.2rem;
+    margin: 0.3rem;
+}
+
+/* Responsive Design for Hero Detail Page */
+@media (max-width: 768px) {
+    .hero-detail-title {
+        font-size: 2.2rem;
+    }
+    
+    .hero-detail-image {
+        width: 250px;
+        height: 250px;
+    }
+    
+    .hero-basic-info,
+    .war-info-card,
+    .biography-card,
+    .additional-info-card,
+    .motto-card {
+        padding: 1.5rem;
+    }
+    
+    .section-title {
+        font-size: 1.6rem;
+    }
+    
+    .tribute-section {
+        padding: 2rem 1rem;
+    }
+    
+    .tribute-title {
+        font-size: 1.8rem;
+    }
+}
+
+@media (max-width: 576px) {
+    .hero-detail-image {
+        width: 200px;
+        height: 200px;
+    }
+    
+    .hero-detail-title {
+        font-size: 1.8rem;
+    }
+    
+    .motto-text {
+        font-size: 1.1rem;
+        padding-left: 1rem;
+    }
+    
+    .story-text {
+        text-indent: 1rem;
+    }
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .hero-title {
+        font-size: 3rem;
+    }
+    
+    .hero-subtitle {
+        font-size: 1.2rem;
+    }
+    
+    .page-title {
+        font-size: 2.5rem;
+    }
+    
+    .section-title {
+        font-size: 2.2rem;
+    }
+    
+    .hero-actions .btn {
+        display: block;
+        margin: 0.5rem 0;
+        width: 100%;
+    }
+    
+    .search-container {
+        padding: 1.5rem;
+    }
+    
+    .search-container .row .col-md-3,
+    .search-container .row .col-md-6 {
+        margin-bottom: 1rem;
+    }
+}
+
+@media (max-width: 576px) {
+    .hero-title {
+        font-size: 2.5rem;
+    }
+    
+    .hero-subtitle {
+        font-size: 1.1rem;
+    }
+    
+    .hero-content {
+        padding: 0 1rem;
+    }
+    
+    .search-container {
+        padding: 1rem;
+    }
+}
+footer .text-muted {
+    color: white !important;
+}
+.custom-icon {
+    width: 5rem;
+    height: 5rem;
+    display: inline-block;
+    border-radius: 2%;
+}
+
+.ajcustom-icon{
+     width: 15rem;
+    height: 15rem;
+    display: inline-block;
+}

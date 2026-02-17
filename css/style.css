@@ -1,0 +1,224 @@
+/* Root Variables */
+:root {
+    --primary-color: #1a472a;
+    --secondary-color: #2d5a3d;
+    --saffron: #ff9933;
+    --white: #ffffff;
+    --green: #138808;
+    --light-gray: #f8f9fa;
+    --dark-gray: #6c757d;
+    --text-dark: #212529;
+    --text-light: #ffffff;
+    --border-color: #dee2e6;
+    --shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    --shadow-lg: 0 10px 25px rgba(0, 0, 0, 0.15);
+}
+
+/* Global Styles */
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    line-height: 1.6;
+    color: var(--text-dark);
+    scroll-behavior: smooth;
+    padding-top: 76px;
+}
+
+/* Custom Bootstrap & Color Utilities */
+.bg-primary { background: linear-gradient(135deg, var(--primary-color), var(--secondary-color)) !important; }
+.text-saffron { color: var(--saffron) !important; }
+.bg-saffron { background-color: var(--saffron) !important; }
+.text-primary { color: var(--primary-color) !important; }
+footer .text-muted { color: white !important; }
+
+/* Buttons */
+.btn-primary {
+    background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+    border: none;
+    transition: all 0.3s ease;
+}
+.btn-primary:hover {
+    background: linear-gradient(135deg, var(--secondary-color), var(--primary-color));
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-lg);
+}
+.btn-outline-light:hover {
+    background-color: rgba(255, 255, 255, 0.1);
+    border-color: var(--saffron);
+    color: var(--saffron);
+    transform: translateY(-3px);
+    box-shadow: var(--shadow-lg);
+}
+
+/* Navigation */
+.navbar {
+    background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+    box-shadow: var(--shadow);
+    transition: all 0.3s ease;
+}
+.navbar-brand { font-size: 1.5rem; font-weight: bold; }
+.nav-link {
+    color: rgba(255, 255, 255, 0.9) !important;
+    transition: all 0.3s ease;
+    position: relative;
+}
+.nav-link:hover, .nav-link.active { color: var(--saffron) !important; }
+.nav-link::after {
+    content: '';
+    position: absolute;
+    bottom: -5px;
+    left: 50%;
+    width: 0;
+    height: 2px;
+    background-color: var(--saffron);
+    transition: all 0.3s ease;
+    transform: translateX(-50%);
+}
+.nav-link:hover::after, .nav-link.active::after { width: 100%; }
+
+/* Hero Section */
+.hero-section {
+    min-height: 100vh;
+    background: linear-gradient(rgba(26, 71, 42, 0.7), rgba(45, 90, 61, 0.8)), url('https://etvbharatimages.akamaized.net/etvbharat/prod-images/768-512-3947597-thumbnail-3x2-soldier.jpg??imwidth=3840?auto=compress&cs=tinysrgb&w=1600') center/cover;
+    display: flex;
+    align-items: center;
+    position: relative;
+    overflow: hidden;
+}
+.hero-section::before, .hero-overlay {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0; bottom: 0;
+    background: linear-gradient(45deg, rgba(255, 153, 51, 0.05) 0%, rgba(26, 71, 42, 0.4) 50%, rgba(19, 136, 8, 0.05) 100%);
+    z-index: 1;
+}
+.hero-overlay { background: radial-gradient(circle at center, rgba(26, 71, 42, 0.3) 0%, rgba(45, 90, 61, 0.4) 100%); }
+.hero-content { position: relative; z-index: 2; animation: fadeInUp 1s ease-out; }
+.hero-title {
+    font-size: 4.5rem;
+    font-weight: bold;
+    text-shadow: 3px 3px 6px rgba(0, 0, 0, 0.5);
+    background: linear-gradient(45deg, #ffffff, var(--saffron), #ffffff);
+    background-size: 200% 200%;
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    animation: gradientShift 3s ease-in-out infinite;
+}
+.hero-subtitle { font-size: 1.4rem; color: rgba(255, 255, 255, 0.9); margin-bottom: 2rem; }
+.hero-badge { animation: pulse 2s infinite; }
+.hero-actions .btn { margin: 0.5rem; padding: 1rem 2rem; font-size: 1.1rem; font-weight: 600; border-radius: 50px; }
+
+/* Generic Page & Section Styles */
+.page-header { background: linear-gradient(135deg, var(--primary-color), var(--secondary-color)); color: white; padding: 6rem 0 4rem; text-align: center; }
+.page-title { font-size: 3.5rem; font-weight: bold; }
+.page-subtitle { font-size: 1.3rem; opacity: 0.9; }
+.section-title { font-size: 2.8rem; font-weight: bold; margin-bottom: 3rem; position: relative; display: inline-block; }
+.section-title::after {
+    content: '';
+    position: absolute;
+    bottom: -10px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 80px;
+    height: 4px;
+    background: linear-gradient(45deg, var(--saffron), var(--green));
+    border-radius: 2px;
+}
+.feature-box { padding: 2rem; text-align: center; transition: all 0.3s ease; border-radius: 15px; }
+
+/* --- Consolidated Card Styles --- */
+.hero-card, .recruitment-card, .war-info-card, .biography-card, .additional-info-card, .motto-card, .hero-basic-info, .search-container, .tribute-section {
+    background: white;
+    border-radius: 15px;
+    box-shadow: var(--shadow);
+    transition: all 0.3s ease;
+    position: relative;
+}
+.war-info-card, .biography-card, .additional-info-card, .motto-card { padding: 2.5rem; margin-bottom: 2rem; border-top: 4px solid var(--saffron); }
+.hero-card, .recruitment-card { overflow: hidden; }
+
+/* --- Consolidated Hover Effects --- */
+.feature-box:hover, .hero-card:hover, .recruitment-card:hover {
+    transform: translateY(-10px);
+    box-shadow: var(--shadow-lg);
+}
+
+/* Individual Card Modifications */
+.hero-card { border-left: 5px solid var(--green); }
+.hero-card:hover { transform: translateY(-10px) scale(1.02); box-shadow: var(--shadow-lg); border-left-color: var(--saffron); }
+.recruitment-card::before, .hero-card::before {
+    content: ''; position: absolute; top: 0; left: 0; right: 0; height: 4px;
+    background: linear-gradient(90deg, var(--saffron), white, var(--green)); z-index: 1;
+}
+.motto-card { background: linear-gradient(135deg, var(--primary-color), var(--secondary-color)); color: white; }
+.motto-text { font-size: 1.3rem; font-style: italic; border-left: 4px solid var(--saffron); padding-left: 2rem; }
+
+/* Search & Tribute Section Gradient Border */
+.search-container, .tribute-section { padding: 2rem; }
+.search-container::before, .tribute-section::before {
+    content: '';
+    position: absolute;
+    top: -3px; left: -3px; right: -3px; bottom: -3px;
+    background: linear-gradient(45deg, var(--saffron), var(--primary-color), var(--green));
+    border-radius: 15px;
+    z-index: -1;
+}
+.form-control, .form-select {
+    border: 2px solid var(--border-color);
+    padding: 0.8rem 1rem;
+    transition: all 0.3s ease;
+    border-radius: 8px;
+}
+.form-control:focus, .form-select:focus {
+    border-color: var(--primary-color);
+    box-shadow: 0 0 0 0.2rem rgba(26, 71, 42, 0.25);
+}
+
+/* Hero Detail Page */
+.hero-detail-section { padding-top: 100px; background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%); }
+.hero-detail-title { font-size: 3rem; color: var(--primary-color); font-weight: bold; }
+.hero-detail-image {
+    width: 300px;
+    height: 300px;
+    border-radius: 15px;
+    object-fit: cover;
+    border: 5px solid var(--primary-color);
+    box-shadow: var(--shadow-lg);
+    transition: all 0.3s ease;
+}
+.hero-detail-image:hover { transform: scale(1.05); }
+.award-badge, .award-badge-large {
+    background: linear-gradient(45deg, var(--saffron), #ffb366);
+    color: white; font-weight: 600; text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.2);
+    display: inline-block;
+}
+.award-badge { padding: 0.4rem 0.8rem; border-radius: 20px; font-size: 0.85rem; }
+.award-badge-large { padding: 0.8rem 1.5rem; border-radius: 25px; font-size: 1rem; border: 3px solid white; }
+.story-text { font-size: 1.1rem; line-height: 1.8; text-align: justify; text-indent: 2rem; }
+
+/* Custom Icons */
+.custom-icon { width: 5rem; height: 5rem; border-radius: 2%; }
+.ajcustom-icon { width: 15rem; height: 15rem; }
+
+/* Animations */
+@keyframes fadeInUp { from { opacity: 0; transform: translateY(30px); } to { opacity: 1; transform: translateY(0); } }
+@keyframes pulse { 0%, 100% { transform: scale(1); } 50% { transform: scale(1.05); } }
+@keyframes gradientShift { 0%, 100% { background-position: 0% 50%; } 50% { background-position: 100% 50%; } }
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .hero-title { font-size: 3rem; }
+    .hero-subtitle { font-size: 1.2rem; }
+    .page-title { font-size: 2.5rem; }
+    .section-title { font-size: 2.2rem; }
+    .hero-detail-title { font-size: 2.2rem; }
+    .hero-detail-image { width: 250px; height: 250px; }
+    .hero-actions .btn { display: block; width: 100%; margin: 0.5rem 0; }
+}
+@media (max-width: 576px) {
+    .hero-title { font-size: 2.5rem; }
+    .hero-subtitle { font-size: 1.1rem; }
+    .hero-detail-title { font-size: 1.8rem; }
+    .hero-detail-image { width: 200px; height: 200px; }
+}

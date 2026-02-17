@@ -1,0 +1,44 @@
+Image Locations in the Project
+1. Hero Section Background Image
+Location: css/style.css (line ~200)
+Path: https://www.mapsofindia.com/ci-moi-images/my-india//2020/02/martyrs-of-pulwama-attack.jpg
+Usage: Background image for the main hero section on index.html
+2. Vite Default Images
+Location: main.js (lines 2-3)
+Paths:
+./javascript.svg (JavaScript logo)
+/vite.svg (Vite logo)
+Usage: Default Vite template logos (currently not displayed)
+3. Hero Profile Images (JSON Data)
+Location: data/heroes.json (image field for each hero)
+Expected Directory: images/ folder
+Files Referenced:
+images/vikram_batra.jpg
+images/sandeep_unnikrishnan.jpg
+images/abdul_hamid.jpg
+images/joginder_singh.jpg
+images/manoj_pandey.jpg
+images/nirmal_sekhon.jpg
+images/jadunath_singh.jpg
+images/shaitan_singh.jpg
+4. Fallback Hero Images
+Location: js/main.js (line ~85) and js/hero.js (line ~50)
+Path: https://images.pexels.com/photos/8828546/pexels-photo-8828546.jpeg?auto=compress&cs=tinysrgb&w=400&h=400
+Usage: Default placeholder when hero images are not available
+5. Missing Image Files
+The following image files are referenced but don't exist in the project:
+
+images/vikram_batra.jpg
+images/sandeep_unnikrishnan.jpg
+images/abdul_hamid.jpg
+images/joginder_singh.jpg
+images/manoj_pandey.jpg
+images/nirmal_sekhon.jpg
+images/jadunath_singh.jpg
+images/shaitan_singh.jpg
+6. Image Usage Summary
+External URLs: 2 (Pulwama background + Pexels fallback)
+Local SVG files: 2 (Vite logos)
+Expected local hero images: 8 (currently missing)
+Total image references: 12
+Note: The hero profile images are currently falling back to the Pexels placeholder image since the actual hero image files don't exist in the images/ directory. You would need to add these image files to display the actual hero photographs.
